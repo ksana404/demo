@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>元素的增删改查</title>
+<!--加入样式表-->
+<style type="text/css">
+	div { border:#0099FF 2px solid;height:60px;width:350px;margin:20px 10px;padding:5px 7px;line-height:60px;font-size:26px;text-align:center;}
+	#div_1{ background-color:#d400ff; }
+	#div_2{ background-color:#FF3399; }
+	#div_3{ background-color:#00FF00; }
+	#div_4{ background-color:#FFFF66; }
+	#info{ width:250px;height:90px;font-size:22px;padding:5px;resize:none;}
+	input{font-size:18px;}
+</style>
+
+<!--引入jquery的js库-->
+<script src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	/** 练习1、添加元素:添加一个div元素到body中 */
+	function addNode(){
+		//创建一个新的div元素(子元素)
+		var div = document.createElement("div");
+		div.innerHTML = "我是新来的...";
+		//获取body元素(父元素)
+		var body = document.body;
+		//将div元素添加到body内部
+		body.appendChild( div );
+	}
+	/** 练习2、删除元素: 删除id为div_2的元素 */
+	//parentNode
+	function deleteNode(){
+		//获取将要被删除的元素(div_2)
+		var div2 = document.getElementById("div_2");
+		//获取id为div_2元素的父元素
+		var parent = div2.parentNode;
+		//通过父元素删除子元素(div_2)
+		parent.removeChild( div2 );
+	}
+	/** 练习3、更新元素内容：将div_3的内容更新为当前时间 */
+	function updateNode(){
+		//获取id为div_3的元素
+		var div3 = document.getElementById("div_3");
+		//获取表示当前时间的字符串
+		var dateStr = new Date().toLocaleString();
+		//将字符串设置给div_3的内容
+		div3.innerHTML = dateStr;
+	}
+	
+</script>
+</head>
+<body>
+	<input type="button" onclick="addNode()"
+			value="创建一个div添加到body中"/>
+    <input type="button" onclick="deleteNode()"
+    		value="删除id为div_2的元素"/>
+    <input type="button" onclick="updateNode()"
+    		value="将div_3的内容更新为当前时间"/><hr/>
+    <div id="div_1">
+		div_1
+    </div>
+    <div id="div_2">
+    	div_2
+    </div>
+    <div id="div_3">
+    	div_3
+    </div>
+    <div id="div_4">
+    	div_4
+    </div>
+	
+	<p>p1</p>
+	<p>p2</p>
+	
+</body>
+</html>

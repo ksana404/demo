@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--订单表的映射文件	namespace值为对应接口的全路径 -->
+<mapper namespace="com.tedu.dao.OrderMapper">
+	<!-- 1.查询所有订单信息，id值为对应接口中方法的名字
+		resultType指定将查询的结果封装到哪个pojo对象中
+		id -> order.setId( 1 );
+		door_id ->  order.setDoor_id( 1 )  order.setDoorId()
+		order_no -> order.setOrder_no( "p001" ) order.setOrderNo()
+		....
+	 -->
+	<select id="findAll" resultType="com.tedu.pojo.Order">
+		select id, door_id doorId, order_no orderNo, 
+		order_type orderType, pnum, cashier,
+		order_time orderTime, pay_time payTime,
+		pay_type payType, price	
+		from tb_order
+	</select>
+	
+	<!--  2、新增订单信息 Order
+		doorId -> order.getDoorId()
+		orderNo -> order.getOrderNo()
+	 -->
+	<update id="add">
+		insert into tb_order values
+		( null, #{doorId}, #{orderNo}, #{orderType}, #{pnum},
+			#{cashier}, #{orderTime}, #{payTime}, #{payType}, 
+			#{price} )
+	</update>	
+	<!--  3、根据id删除订单信息 -->
+	<update id="deleteById">
+		delete from tb_order where id=#{id}
+	</update>
+	<!--  4、根据id修改订单信息 Order -->
+	<update id="updateById">
+		update tb_order set door_id=#{doorId}, 
+		order_no=#{orderNo}, order_type=#{orderType}, 
+		pnum=#{pnum}, cashier=#{cashier}, 
+		order_time=#{orderTime}, pay_time=#{payTime}, 
+		pay_type=#{payType}, price=#{price}
+		where id=#{id}
+	</update>
+	
+	<!-- 5、根据id查询订单信息 -->
+	<select id="findById" resultType="com.tedu.pojo.Order">
+		select id, door_id doorId, order_no orderNo, 
+		order_type orderType, pnum, cashier,
+		order_time orderTime, pay_time payTime,
+		pay_type payType, price	
+		from tb_order where id=#{id}
+	</select>
+	
+	
+	
+	
+	
+
+</mapper>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>电灯开关案例</title>
+<style>
+	body{padding:20px;font-size:20px;}
+	#div1{width:30%;border:1px solid red;padding:5px;margin-bottom:20px;}
+</style>
+<script>
+	/** 练习：点击按钮，开灯或关灯 */
+	var flag = "off"; //off表示灯是关闭状态
+	function changeImg(){
+		//通过id获取一个表示img元素的JS对象
+		var img = document.getElementById("img1");
+		if( flag == "off" ){ //灯是关闭状态
+			img.src = "imgs/on.gif";
+			flag = "on";
+		}else{ //灯是打开状态
+			img.src = "imgs/off.gif";
+			flag = "off";
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="开/关灯"
+		onclick="changeImg()" /> <br/><br/>
+	<img id="img1" src="imgs/off.gif" />
+	
+</body>
+</html>
+
+
